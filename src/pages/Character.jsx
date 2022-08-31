@@ -1,9 +1,11 @@
 import React from "react";
 import { useCharacter } from "../hooks/useCharacter";
 import "./Character.css";
+import { useParams } from "react-router-dom";
 
 const Character = () => {
-  const { data, loading, error } = useCharacter(1);
+  const { id } = useParams();
+  const { data, loading, error } = useCharacter(id);
   if (error) return <div>Error!</div>;
   if (loading) return <div>Loading...</div>;
   const { image, name, episode } = data.character;
